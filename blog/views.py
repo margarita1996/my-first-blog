@@ -12,8 +12,10 @@ def shop_list(request):
 
 
 def product_list(request, pk):
-    products = list(Products.objects.filter(shopsandproducts__shop_id=pk).order_by('name'))
-    return render(request, 'blog/product_list.html', {'products': products, 'pk': pk})
+    shop = Shops.objects.get(id = pk)
+    products = Products.objects.filter(shopsandproducts__shop_id=pk).order_by('name')
+    l = len(products)
+    return render(request, 'blog/product_list.html', {'products': products, 'shop': shop, 'pk': pk, 'l': l})
 
 
 def product(request, pk1, pk2):

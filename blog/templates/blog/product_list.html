@@ -1,5 +1,12 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+    <h1>{{ shop.name }}</a></h1>
+	<p> {{ shop.address }} </p>
+	{% if l == 0 %}
+	    <p>На данный момент товаров нет</p>
+    {% else %}
+	<p>Товары в наличии:</p>
+	{%  endif %}
     {% for product in products %}
         <div class="prlist">
             <h1><a href="{% url 'product' pk1=pk pk2=product.pk %}">{{ product.name }}</a></h1>
