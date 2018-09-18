@@ -3,7 +3,7 @@
     {% for shop in shops %}
         <div class="shlist">
             <h1><a href="{% url 'product_list' pk=shop.pk %}">{{ shop.name }}</a></h1>
-            <p>{{ shop.address|linebreaksbr }}</p>
+            <p>{{shop.address|linebreaksbr }}</p>
         </div>
     {% endfor %}
 {% endblock %}
