@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <h1>{{ shop.name }}</a></h1>
+	<p> {{ shop.address }} </p>
+	{% if l == 0 %}
+	    <p> На данный момент в этом магазине нет товаров</p>
+    {% else %}
+	    <p> Товары в наличии: </p>
+    {% endif %}
+    {% for product in products %}
+        <div class="prlist">
+            <h3>{{ product.name }}</h3>
+			<p>Цена {{ product.price }} рублей</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <h1>{{ manufacture.name }}</a></h1>
+	<p>Телефон {{ manufacture.telephone }}</p>
+	{% if l == 0 %}
+	    <p>Компания ещё не произвела ни одного продукта</p>
+    {% else %}
+	<p>Произведены товары:</p>
+	{%  endif %}
+    {% for product in products %}
+        <div class="prlist">
+            <h3>{{ product.name }}</h3>
+			<p>Цена {{ product.price }} рублей</p>
+        </div>
+    {% endfor %}
+{% endblock %}

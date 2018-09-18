@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+        <div class="pr">
+            <h1>{{ product.name }}</h1>
+            <p> Цена {{ product.price|linebreaksbr }} рублей</p>
+			<p> Имеется в наличии {{ count }} упаковок</p>
+			<p> Дата изготовления {{date}} </p>
+			<h4><a href="{% url 'manufacture' pk=manufacture.pk %}"> Производитель: {{ manufacture.name }}</a></h1>
+        </div>
+{% endblock %}
