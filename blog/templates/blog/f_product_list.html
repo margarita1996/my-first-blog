@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     {% for product in products %}
-        <div class="prlist">
+        <div class="list">
             <h1><a href="{% url 'addresses' pk=product.pk %}">{{ product.name }}</a></h1>
             <p> Цена {{ product.price}} рублей</p>
         </div>

@@ -22,7 +22,7 @@ for line in lines:
     ma = Shops()
     ma.id = mas[0]
     ma.name = mas[1]
-    ma.address = mas[2]
+    ma.address =f.close mas[2]
     ma.save()
 f.close()
 

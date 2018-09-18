@@ -8,8 +8,8 @@
 	<p>Произведены товары:</p>
 	{%  endif %}
     {% for product in products %}
-        <div class="prlist">
-            <h3>{{ product.name }}</h3>
+        <div class="list">
+            <h3><a href="{% url 'addresses' pk=product.pk %}">{{ product.name }}</a></h3>
 			<p>Цена {{ product.price }} рублей</p>
         </div>
     {% endfor %}

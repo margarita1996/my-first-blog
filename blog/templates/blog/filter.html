@@ -3,7 +3,9 @@
         <div class="f">
 		    <p> Найти: </p>
             <h1> <a href="{% url 'findproduct' %}"> Товар </a></h1>
-			<h1> <a href="{% url 'findshop' %}"> Магазин </a></h1>
+			<h1> <a href="{% url 'findprice' %}"> Товары по конкретной цене </a></h1>
+			<h1> <a href="{% url 'findshops' %}"> Магазины одной сети</a></h1>
+			<h1> <a href="{% url 'findshop' %}"> Магазин по адресу</a></h1>
 			<h1> <a href="{% url 'findmanufacture' %}"> Производителя </a></h1>
         </div>
 {% endblock %}

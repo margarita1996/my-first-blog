@@ -16,11 +16,17 @@ class FindProductForm(forms.ModelForm):
         fields = ('name',)
 
 
-class FindShopForm(forms.ModelForm):
+class FindShopsForm(forms.ModelForm):
 
     class Meta:
         model = Shops
         fields = ('name',)
+
+class FindShopForm(forms.ModelForm):
+
+    class Meta:
+        model = Shops
+        fields = ('address',)
 
 
 class FindManufactureForm(forms.ModelForm):
@@ -28,3 +34,9 @@ class FindManufactureForm(forms.ModelForm):
     class Meta:
         model = Manufactures
         fields = ('name',)
+
+class FindPriceForm(forms.ModelForm):
+
+    class Meta:
+        model = Products
+        fields = ('price',)

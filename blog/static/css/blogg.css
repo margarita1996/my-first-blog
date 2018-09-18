@@ -20,7 +20,7 @@ h1, h2, h3, h4 {
 }
 
 
-.shlist h1 a{
+.list h1 , h2 , h3{
     color: #ff0000;
 }
 
@@ -28,13 +28,6 @@ h1, h2, h3, h4 {
     margin-bottom: 70px;
 }
 
-.prlist h1 a{
-    color: #333333;
-}
-
-.pr h1{
-    color: #333333;
-}
 
 .f h1 a{
     color: #333333;

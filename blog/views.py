@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Post, Shops, Products, Manufactures, ShopsAndProducts, ProductsAndManufactures
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, FindProductForm, FindShopForm, FindManufactureForm
+from .forms import PostForm, FindProductForm, FindShopsForm, FindShopForm, FindManufactureForm, FindPriceForm
 from django.shortcuts import redirect
 
 
@@ -57,16 +57,16 @@ def addresses(request, pk):
     return render(request, 'blog/addresses.html', {'product': product, 'shops': shops, 'l': l})
 
 
-def findshop(request):
+def findshops(request):
     if request.method == "POST":
-        form = FindShopForm(request.POST)
+        form = FindShopsForm(request.POST)
         if form.is_valid():           
             shop = form.save(commit=False) 
             shops = Shops.objects.filter(name = shop.name)
             return render(request, 'blog/f_shop_list.html', {'shops': shops})
     else:
-        form = FindShopForm()
-        return render(request, 'blog/findshop.html', {'form': form})
+        form = FindShopsForm()
+        return render(request, 'blog/findshops.html', {'form': form})
 
 
 def products(request, pk):
@@ -74,6 +74,20 @@ def products(request, pk):
     products = Products.objects.filter(shopsandproducts__shop_id=pk)
     l = len(products)
     return render(request, 'blog/products.html', {'products': products, 'shop': shop, 'l': l})
+
+
+def findshop(request):
+    if request.method == "POST":
+        form = FindShopForm(request.POST)
+        if form.is_valid():           
+            sh = form.save(commit=False) 
+            shop = Shops.objects.get(address = sh.address)
+            products = Products.objects.filter(shopsandproducts__shop_id=shop.id)
+            l = len(products)
+            return render(request, 'blog/products.html', {'products': products, 'shop': shop, 'l': l})
+    else:
+        form = FindShopForm()
+        return render(request, 'blog/findshop.html', {'form': form})
 
 
 def findmanufacture(request):
@@ -88,6 +102,18 @@ def findmanufacture(request):
     else:
         form = FindManufactureForm()
         return render(request, 'blog/findmanufacture.html', {'form': form})
+
+
+def findprice(request):
+    if request.method == "POST":
+        form = FindPriceForm(request.POST)
+        if (form.is_valid()):
+            product = form.save(commit=False) 
+            products = Products.objects.filter(price = product.price)
+            return render(request, 'blog/f_product_list.html', {'products': products})
+    else:
+        form = FindPriceForm()
+        return render(request, 'blog/findprice.html', {'form': form})
 
 
 
