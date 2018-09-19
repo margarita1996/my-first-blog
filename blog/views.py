@@ -44,6 +44,9 @@ def findproduct(request):
         if form.is_valid():
             product = form.save(commit=False) 
             products = Products.objects.filter(name = product.name)
+            l = len(products)
+            if l == 0:
+                return render(request, 'blog/exception.html', {'e': 4})
             return render(request, 'blog/f_product_list.html', {'products': products})
     else:
         form = FindProductForm()
@@ -63,6 +66,9 @@ def findshops(request):
         if form.is_valid():           
             shop = form.save(commit=False) 
             shops = Shops.objects.filter(name = shop.name)
+            l = len(shops)
+            if l == 0:
+                return render(request, 'blog/exception.html', {'e': 3})
             return render(request, 'blog/f_shop_list.html', {'shops': shops})
     else:
         form = FindShopsForm()
@@ -81,7 +87,11 @@ def findshop(request):
         form = FindShopForm(request.POST)
         if form.is_valid():           
             sh = form.save(commit=False) 
-            shop = Shops.objects.get(address = sh.address)
+            shops = Shops.objects.filter(address = sh.address)
+            l = len(shops)
+            if l == 0:
+                return render(request, 'blog/exception.html', {'e': 2})
+            shop = shops[0]
             products = Products.objects.filter(shopsandproducts__shop_id=shop.id)
             l = len(products)
             return render(request, 'blog/products.html', {'products': products, 'shop': shop, 'l': l})
@@ -95,10 +105,14 @@ def findmanufacture(request):
         form = FindManufactureForm(request.POST)
         if form.is_valid():
             manufac = form.save(commit=False) 
-            manufacture = Manufactures.objects.get(name = manufac.name)
+            manufactures = list(Manufactures.objects.filter(name = manufac.name))
+            l = len(manufactures)
+            if l == 0:
+                return render(request, 'blog/exception.html', {'e': 1})
+            manufacture = manufacture[0]
             products = Products.objects.filter(productsandmanufactures__manufacture_id = manufacture.id)
-            l = len(products)
-            return render(request, 'blog/f_manufacture.html', {'manufacture': manufacture, 'products': products, 'l': l})
+            lp = len(products)
+            return render(request, 'blog/f_manufacture.html', {'manufacture': manufacture, 'products': products, 'lp': lp, 'lm':lm})
     else:
         form = FindManufactureForm()
         return render(request, 'blog/findmanufacture.html', {'form': form})
@@ -110,6 +124,9 @@ def findprice(request):
         if (form.is_valid()):
             product = form.save(commit=False) 
             products = Products.objects.filter(price = product.price)
+            l = len(products)
+            if l == 0:
+                return render(request, 'blog/exception.html', {'e': 5})
             return render(request, 'blog/f_product_list.html', {'products': products})
     else:
         form = FindPriceForm()

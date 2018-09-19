@@ -21,17 +21,19 @@ h1, h2, h3, h4 {
 
 
 .list h1 , h2 , h3{
-    color: #ff0000;
+    color: #000000;
 }
+
+
+.shlist h1 a{
+    color: #ff0000
+}
+
 
 .shlist {
-    margin-bottom: 70px;
+    margin-bottom: 70px;  
 }
 
-
-.f h1 a{
-    color: #333333;
-}
 
 .save {
     float: right;
