@@ -39,17 +39,6 @@ for line in lines:
 f.close()
 
 
-
-#f2 = codecs.open('data/manufactures2.txt', 'w','UTF-8')
-    #f2.write(mas[0])
-    #f2.write('\r\t')
-    #f2.write(mas[1])
-    #f2.write('\r\t')
-    #f2.write(mas[2])
-    #f2.write('\r')
-#f2.close()
-
-
 f = codecs.open('data/products_and_manufactures.txt', 'r', 'UTF-8')
 line = f.readline()
 lines = f.readlines()
